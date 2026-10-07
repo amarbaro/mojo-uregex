@@ -1,0 +1,9 @@
+[project]
+name = "mojo-uregex"
+version = "0.3.0"
+description = "Unicode-aware backtracking regex engine for Mojo: \\p{L} classes, lookahead, case-insensitive groups, PCRE alternation semantics, built for LLM tokenizers"
+requires-python = ">=3.10,<3.15"
+dependencies = ["mojo==1.1.0"]
+
+[dependency-groups]
+dev = ["regex==2026.9.29"]  # oracle pinned to Unicode 18.0; check_unicode.py fails on a newer Unicode
