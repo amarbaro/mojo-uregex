@@ -24,7 +24,7 @@ def from_codepoints(cps: List[Int], start: Int, end: Int) -> String:
 
 
 def _slice(text: String, start: Int, end: Int) -> String:
-    return String(StringSlice(unsafe_from_utf8=text.as_bytes()[start:end]))
+    return String(unsafe_from_utf8=text.as_bytes()[start:end])
 
 
 struct PatternT[full: Bool](Copyable, Movable):
