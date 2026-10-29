@@ -25,7 +25,7 @@ slice the input without copying it to codepoints.
 ## Performance
 
 `tools/bench.sh`: `findall` over a 1.05 MB mixed-script corpus, best of 5,
-Mojo 1.1.0, CPU. Match counts equal Python `regex` for every pattern.
+Mojo 1.2.0, CPU. Match counts equal Python `regex` for every pattern.
 
 | pattern | Python `regex` MB/s | uregex MB/s | uregex vs Python |
 |---|---|---|---|
@@ -52,10 +52,10 @@ Against 0.1.0, same corpus:
 
 ## Setup
 
-Mojo 1.1 in a project venv (the commands below use `./.venv/bin/mojo`):
+Mojo 1.2 in a project venv (the commands below use `./.venv/bin/mojo`):
 
 ```
-python3 -m venv .venv && ./.venv/bin/pip install 'mojo==1.1.0' 'regex==2026.9.29'
+python3 -m venv .venv && ./.venv/bin/pip install 'mojo==1.2.0' 'regex==2026.9.29'
 ```
 
 ## Usage
@@ -84,7 +84,7 @@ Offsets are UTF-8 byte offsets into the String (`search`, `findall_spans`,
 `findall_groups`); `findall_cps_offsets` gives codepoint offsets. `findall` and
 `split_keep` return slices of the input.
 
-Build with `-I src`. Requires Mojo 1.1 (`mojo==1.1.0` from PyPI).
+Build with `-I src`. Requires Mojo 1.2 (`mojo==1.1.0` from PyPI).
 
 ## Supported syntax
 
