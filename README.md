@@ -1,5 +1,9 @@
 # mojo-uregex
 
+<!-- badges -->
+[![latest release](https://img.shields.io/github/v/release/amarbaro/mojo-uregex)](https://github.com/amarbaro/mojo-uregex/releases/latest) [![license](https://img.shields.io/github/license/amarbaro/mojo-uregex)](https://github.com/amarbaro/mojo-uregex/blob/main/LICENSE)
+<!-- /badges -->
+
 Unicode-aware regular expressions for Mojo, built for the pre-tokenizers of LLM
 tokenizers (GPT-2, Llama 3, Qwen, DeepSeek, gpt-oss, Spark-X2.5) and verified
 against Python's `regex` module by differential testing.
