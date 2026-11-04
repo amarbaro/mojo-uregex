@@ -9,13 +9,6 @@ struct Match(Copyable, Movable, ImplicitlyCopyable):
     var end: Int
 
 
-def to_codepoints(s: StringSlice) -> List[Int]:
-    var out = List[Int]()
-    for c in s.codepoints():
-        out.append(Int(c.to_u32()))
-    return out^
-
-
 def from_codepoints(cps: List[Int], start: Int, end: Int) -> String:
     var s = String("")
     for i in range(start, end):
