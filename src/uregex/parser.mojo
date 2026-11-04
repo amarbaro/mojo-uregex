@@ -329,6 +329,8 @@ struct Parser:
                 self.i += 1
             self.expect(125)
         else:
+            if self.peek() == -1:
+                raise Error("uregex: \\p needs a property name")
             name = String(Codepoint.from_u32(UInt32(self.peek())).value())
             self.i += 1
         return name

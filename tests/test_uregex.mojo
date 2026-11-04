@@ -59,6 +59,15 @@ def test_rejects_unsupported() raises:
         _ = Pattern(r"(?P<n>a)(?P<n>b)")
 
 
+def test_trailing_property_escape_raises() raises:
+    with assert_raises(contains="property"):
+        _ = Pattern(r"\p")
+    with assert_raises(contains="property"):
+        _ = Pattern(r"a[\p")
+    with assert_raises():
+        _ = Pattern(r"\p{L")
+
+
 def test_plain_pattern_rejects_full_syntax() raises:
     with assert_raises():
         _ = Pattern(r"\bx")
