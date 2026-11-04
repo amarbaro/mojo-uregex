@@ -88,13 +88,13 @@ Offsets are UTF-8 byte offsets into the String (`search`, `findall_spans`,
 `findall_groups`); `findall_cps_offsets` gives codepoint offsets. `findall` and
 `split_keep` return slices of the input.
 
-Build with `-I src`. Requires Mojo 1.2 (`mojo==1.1.0` from PyPI).
+Build with `-I src`. Requires Mojo 1.2 (`mojo==1.2.0` from PyPI).
 
 ## Supported syntax
 
 Literals and escapes (`\n \t \xHH \x{H..} \uHHHH \UHHHHHHHH`), `.` (no newline),
-`^` `$` (text start/end), classes `[...]` `[^...]` with ranges and `\p{}`/`\d\w\s`
-inside, `\p{Xx}` `\P{Xx}` for all general categories, `\d \w \s \D \W \S`,
+`^` `$` (text start/end; unlike Python `re`, `$` does not match before a final `\n`), classes `[...]` `[^...]` with ranges and `\p{}`/`\d\w\s`
+inside, `\p{Xx}` `\P{Xx}` for the general categories (`Cs` and `LC` raise), `\d \w \s \D \W \S`,
 greedy and lazy `* + ? {m} {m,} {m,n}` (`*?` ...), `(?:...)`, `(?i:...)`,
 `(?=...)`, `(?!...)`, `|`.
 

@@ -1,7 +1,7 @@
 # rattler-build recipe, modular-community shape.
 # Build locally: rattler-build build -r recipe.yaml -c https://conda.modular.com/max -c conda-forge
 context:
-  version: 0.3.0
+  version: 0.3.1
 
 package:
   name: "uregex"
@@ -17,9 +17,9 @@ build:
 
 requirements:
   host:
-    - mojo-compiler =1.1.0
+    - mojo-compiler =1.2.0
   build:
-    - mojo-compiler =1.1.0
+    - mojo-compiler =1.2.0
   run:
     - ${{ pin_compatible('mojo-compiler') }}
 
