@@ -4,7 +4,7 @@ context:
   version: 0.3.1
 
 package:
-  name: "uregex"
+  name: "mojo-uregex"
   version: ${{ version }}
 
 source:
@@ -34,14 +34,14 @@ tests:
         - tests/
 
 about:
-  homepage: https://github.com/amarbarosys/mojo-uregex
+  homepage: https://github.com/amarbaro/mojo-uregex
   license: Apache-2.0
   license_file: LICENSE
-  summary: Unicode-aware backtracking regex engine for Mojo, built for LLM tokenizers
-  repository: https://github.com/amarbarosys/mojo-uregex
+  summary: Unicode-aware backtracking regex engine for Mojo
+  repository: https://github.com/amarbaro/mojo-uregex
 
 extra:
   maintainers:
     - amarbaro.org
   project_name:
-    - uregex
+    - mojo-uregex
