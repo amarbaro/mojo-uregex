@@ -1,0 +1,2 @@
+# mojo-upgrade check: tools/bench_mojoregex.mojo is the optional comparison arm and needs a msaelices/mojo-regex checkout
+skip tools/bench_mojoregex.mojo needs a mojo-regex checkout under .work/bench/mojo-regex (optional comparison arm, not part of the gate)
