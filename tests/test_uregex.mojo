@@ -77,6 +77,16 @@ def test_inverted_repeat_bounds_raise() raises:
     assert_equal(findall(r"a{1,3}", "aaaa")[0], "aaa")
 
 
+def test_backreferences_are_rejected() raises:
+    with assert_raises(contains="backreference"):
+        _ = FullPattern(r"(a)\1")
+    with assert_raises(contains="backreference"):
+        _ = Pattern(r"\9")
+    with assert_raises(contains="backreference"):
+        _ = FullPattern(r"(?P<n>a)\k<n>")
+    assert_equal(len(findall(r"\0", "a")), 0)  # \0 stays NUL
+
+
 def test_plain_pattern_rejects_full_syntax() raises:
     with assert_raises():
         _ = Pattern(r"\bx")
