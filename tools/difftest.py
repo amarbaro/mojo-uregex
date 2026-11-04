@@ -44,6 +44,8 @@ FEATURE_PATTERNS = {
     "escapes": r"[\t\n\x20-\x2f一\U0001F600]+",
     "dot": r"a.b",
     "anchors": r"^\s*|\s*$",
+    "dollar": r"a$|\n$|$",
+    "dollar_z": r"a\Z|\n\z|\z",
     "cjk_range": r"[぀-ヿ]+|[^぀-ヿ\s]+",
     "lazy": r"a+?b|\s*?\n|x{1,3}?y?|[^,]*?,",
     "lazy_tok": r"\p{L}+?(?=\s)|\d{2,4}?",
@@ -93,7 +95,7 @@ def main():
     rng = random.Random(a.seed)
     fails, silent = 0, []
     for name, pat in {**TOKENIZER_PATTERNS, **FEATURE_PATTERNS}.items():
-        texts = ["", " ", "a", "\n"] + [rand_text(rng, a.maxlen) for _ in range(a.n)]
+        texts = ["", " ", "a", "\n", "a\n", "a\n\n", "\n\n"] + [rand_text(rng, a.maxlen) for _ in range(a.n)]
         texts = [t for t in texts if "\0" not in t]
         got = ours(a.cli, pat, texts, a.bytes)
         bad = 0

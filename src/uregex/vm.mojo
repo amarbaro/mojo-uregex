@@ -149,7 +149,7 @@ struct Program(Copyable, Movable):
         elif n.kind == N_BOL:
             _ = self.emit(I_BOL)
         elif n.kind == N_EOL:
-            _ = self.emit(I_EOL)
+            _ = self.emit(I_EOL, 0, 0, False, n.neg)
         elif n.kind == N_CAT:
             for k in n.kids:
                 self.emit_node(ast, k)
@@ -315,8 +315,8 @@ struct Program(Copyable, Movable):
                     pc += 1
                 else:
                     ok = False
-            elif op == I_EOL:
-                if pos == n:
+            elif op == I_EOL:   # Python's `$`: the end, or just before a final "\n"; neg (\Z, \z): the end only
+                if pos == n or (not ins.neg and pos == n - 1 and text[pos] == 10):
                     pc += 1
                 else:
                     ok = False

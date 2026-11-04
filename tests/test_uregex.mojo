@@ -29,6 +29,22 @@ def test_alternation_is_leftmost_first() raises:
     assert_equal(findall("ab|abc", "abc")[0], "ab")
 
 
+def test_dollar_matches_before_a_final_newline() raises:
+    # Python re/regex: `$` is the text end and just before a final "\n"; `\Z` and `\z` only the very end
+    assert_equal(len(findall("a$", "a\n")), 1)
+    assert_equal(len(findall("a$", "a\n\n")), 0)
+    assert_equal(len(findall("a$", "\n")), 0)
+    assert_equal(len(findall("a$", "")), 0)
+    assert_equal(len(findall("\n$", "\n")), 1)
+    assert_equal(search("$", "a\n").value().start, 1)
+    assert_equal(search("$", "a\n\n").value().start, 2)
+    assert_equal(len(findall("$", "a\n")), 2)
+    assert_equal(len(findall("a\\Z", "a\n")), 0)
+    assert_equal(len(findall("a\\z", "a\n")), 0)
+    assert_equal(len(findall("a\\Z", "a")), 1)
+    assert_equal(search("\\z", "a\n").value().start, 2)
+
+
 def test_split_keep_covers_text() raises:
     var pieces = split_keep(r"\p{N}+", "ab12cd3")
     assert_equal(len(pieces), 4)
