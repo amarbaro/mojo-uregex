@@ -3,6 +3,7 @@ from std.testing import assert_equal, assert_true, assert_raises, TestSuite
 from uregex import Pattern, FullPattern, findall, search, split_keep
 from uregex.vm import Inst
 from std.sys import size_of
+from std.time import perf_counter_ns
 
 
 def test_unicode_classes() raises:
@@ -85,6 +86,20 @@ def test_backreferences_are_rejected() raises:
     with assert_raises(contains="backreference"):
         _ = FullPattern(r"(?P<n>a)\k<n>")
     assert_equal(len(findall(r"\0", "a")), 0)  # \0 stays NUL
+
+
+def test_huge_counts_are_capped_fast() raises:
+    # bounded repeats are unrolled, so the program size is capped; past it compiling raises at once
+    var t = perf_counter_ns()
+    with assert_raises(contains="too large"):
+        _ = Pattern(r"a{99999999999}")
+    with assert_raises(contains="too large"):
+        _ = Pattern(r"(?:a{2000}){1000}")
+    with assert_raises(contains="too large"):
+        _ = Pattern(r"a{1,99999999999}")
+    assert_true(perf_counter_ns() - t < 1_000_000_000)
+    assert_equal(len(findall(r"a{1000}", "a" * 2500)), 2)
+    assert_equal(len(findall(r"a{1,5000}", "a" * 2500)), 1)
 
 
 def test_plain_pattern_rejects_full_syntax() raises:

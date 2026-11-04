@@ -94,7 +94,7 @@ Literals and escapes (`\n \t \xHH \x{H..} \uHHHH \UHHHHHHHH`), `.` (no newline),
 `^` `$` (text start/end; unlike Python `re`, `$` does not match before a final `\n`), classes `[...]` `[^...]` with ranges and `\p{}`/`\d\w\s`
 inside, `\p{Xx}` `\P{Xx}` for the general categories (`Cs` and `LC` raise), `\d \w \s \D \W \S`,
 greedy and lazy `* + ? {m} {m,} {m,n}` (`*?` ...), `(?:...)`, `(?i:...)`,
-`(?=...)`, `(?!...)`, `|`.
+`(?=...)`, `(?!...)`, `|`. Counted repeats are unrolled at compile time, so a pattern that compiles to more than 1,048,576 instructions (`a{99999999999}`, `(?:a{2000}){1000}`) raises `pattern too large`.
 
 `FullPattern` only: capture groups `(...)`, named groups `(?P<name>...)` and
 `(?<name>...)`, word boundaries `\b` `\B`, fixed-length lookbehind `(?<=...)`
