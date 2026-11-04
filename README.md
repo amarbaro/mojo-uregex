@@ -1,7 +1,7 @@
 # mojo-uregex
 
 <!-- badges -->
-[![latest release](https://img.shields.io/github/v/release/amarbaro/mojo-uregex)](https://github.com/amarbaro/mojo-uregex/releases/latest) [![license](https://img.shields.io/github/license/amarbaro/mojo-uregex)](https://github.com/amarbaro/mojo-uregex/blob/main/LICENSE)
+[![ci](https://github.com/amarbaro/mojo-uregex/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/amarbaro/mojo-uregex/actions/workflows/ci.yml) [![latest release](https://img.shields.io/github/v/release/amarbaro/mojo-uregex)](https://github.com/amarbaro/mojo-uregex/releases/latest) [![license](https://img.shields.io/github/license/amarbaro/mojo-uregex)](https://github.com/amarbaro/mojo-uregex/blob/main/LICENSE) [![checks](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/amarbaro/mojo-uregex/badges/checks.json)](https://github.com/amarbaro/mojo-uregex/actions/workflows/ci.yml)
 <!-- /badges -->
 
 <!-- install -->
