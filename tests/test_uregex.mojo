@@ -68,6 +68,15 @@ def test_trailing_property_escape_raises() raises:
         _ = Pattern(r"\p{L")
 
 
+def test_inverted_repeat_bounds_raise() raises:
+    with assert_raises(contains="repeat"):
+        _ = Pattern(r"a{3,1}")
+    with assert_raises(contains="repeat"):
+        _ = FullPattern(r"(?:ab){2,1}?")
+    assert_equal(len(findall(r"a{2,2}", "aaaa")), 2)
+    assert_equal(findall(r"a{1,3}", "aaaa")[0], "aaa")
+
+
 def test_plain_pattern_rejects_full_syntax() raises:
     with assert_raises():
         _ = Pattern(r"\bx")

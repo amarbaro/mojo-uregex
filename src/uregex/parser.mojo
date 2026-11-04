@@ -204,6 +204,8 @@ struct Parser:
                 if not self.eat(125):
                     self.i = save
                     return a
+                if hi != -1 and hi < lo:
+                    raise Error("uregex: bad repeat, {" + String(lo) + "," + String(hi) + "} has max below min")
                 self.i -= 1
             else:
                 return a
