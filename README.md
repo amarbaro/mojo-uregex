@@ -5,7 +5,8 @@
 <!-- /badges -->
 
 <!-- install -->
-Install: `pixi add mojo-uregex` once published. For now: `git clone https://github.com/amarbaro/mojo-uregex`, then `mojo run -I mojo-uregex/src app.mojo`.
+Install: `pixi workspace channel add https://conda.modular.com/max https://prefix.dev/amarbaro/amarbaro`, then `pixi add mojo-uregex` (import `uregex`). From source: `git clone https://github.com/amarbaro/mojo-uregex`, then `mojo run -I mojo-uregex/src app.mojo`.
+Toolchains: Mojo 1.2 stable, and the nightly 1.3.0.dev2026110805 in the weekly [mojo-libs](https://github.com/amarbaro/mojo-libs) matrix (36 libraries on stable, 35 on nightly).
 
 ```mojo
 from uregex import findall
@@ -106,6 +107,8 @@ variable-length lookbehind, unbounded repeats of a nullable expression.
 Unicode tables (general categories, `\d \w \s`, case maps) are generated from
 the Unicode Character Database 18.0 by `tools/gen_unicode.mojo`.
 
+**Limits:** Possessive quantifiers, backreferences, variable-length lookbehind and unbounded repeats of a nullable expression raise a parse error. A pattern over 1,048,576 instructions raises `pattern too large`. `Pattern` refuses features that need `FullPattern` (captures, named groups, `\b`, lookbehind).
+
 ## Verification
 
 `tools/gen_unicode.mojo` writes `src/uregex/unicode_tables.mojo` from the
@@ -141,6 +144,8 @@ differential test as every other pattern.
 `recipe.yaml` (modular-community shape) builds a precompiled `.conda` and runs
 the unit tests against it: `pixi run package` (needs `rattler-build`), output in
 `.work/conda/`. Not published.
+
+- API: [docs/api.md](docs/api.md) · design: [docs/design.md](docs/design.md) · agent skill: [skills/mojo-uregex/SKILL.md](skills/mojo-uregex/SKILL.md)
 
 ## License
 
