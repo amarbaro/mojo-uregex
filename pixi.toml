@@ -1,4 +1,5 @@
 [workspace]
+preview = ["pixi-build"]
 authors = ["amarbaro.org <dev@amarbaro.com>"]
 channels = ["https://conda.modular.com/max", "conda-forge"]
 name = "mojo-uregex"
@@ -16,3 +17,24 @@ package = "rattler-build build -r recipe.yaml -c https://conda.modular.com/max -
 
 [dependencies]
 mojo = "==1.2.0"
+
+# pixi-build-mojo package: lets mojoshelf and `pixi add --git` consume this library as a source dependency.
+[package]
+name = "mojo-uregex"
+version = "0.3.3"
+
+[package.build]
+backend = { name = "pixi-build-mojo", version = "0.*" }
+
+[package.build.config.pkg]
+path = "src/uregex"
+name = "uregex"
+
+[package.host-dependencies]
+mojo-compiler = "=1.2.0"
+
+[package.build-dependencies]
+mojo-compiler = "=1.2.0"
+
+[package.run-dependencies]
+mojo-compiler = "=1.2.0"

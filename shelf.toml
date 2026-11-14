@@ -1,0 +1,4 @@
+name = "mojo-uregex"
+version = "0.3.3"
+description = "Unicode-aware backtracking regex engine for Mojo: \\p{L} classes, lookahead, case-insensitive groups, PCRE alternation semantics, built for LLM tokenizers"
+tags = ["mojo", "regex", "unicode"]
